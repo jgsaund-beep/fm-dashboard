@@ -188,7 +188,7 @@
       <input class="form-input" id="fPct" type="number" min="0" max="100" placeholder="0">
     </div>
     <div class="modal-actions">
-      <button class="btn-modal-delete" id="deleteBtn" onclick="deleteProject()" style="display:none">Close & Remove</button>
+      <button class="btn-modal-delete" id="deleteBtn" onclick="deleteProject()" style="display:none">Remove Project</button>
       <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-modal-save" onclick="saveModal()">Save</button>
     </div>
@@ -197,14 +197,11 @@
 
 <script>
 // ── CONFIG ─────────────────────────────────────────────────────────────────
-const DATA_URL = 'https://raw.githubusercontent.com/jgsaund-beep/fm-dashboard/jons-claude/dashboard_data.json';
-const GITHUB_TOKEN  = localStorage.getItem('gh_token') || '';
-const GITHUB_REPO   = 'jgsaund-beep/fm-dashboard';
-const GITHUB_BRANCH = 'jons-claude';
-const GITHUB_FILE   = 'FM_Dashboard.html';
+// Local file is master. Edit here → Done saves to file → push with GitHub Desktop.
+let fileHandle = null; // File System Access API handle (set on first save)
 
-// ── SEED DATA (current as of 2026-07-21) ───────────────────────────────────
-
+// ── SEED DATA ──────────────────────────────────────────────────────────────
+/* SEED_START */
 const SEED_PROJECTS = [
   {id:"IN031",ucmgCode:"IN031",ucmgNumber:"1334711000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Parallel unracking confirmed 7/22, team: Brandon Lowery (Lead), Adam Buckley, King Price. Zionsville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
   {id:"IN115",ucmgCode:"IN115",ucmgNumber:"1334707000",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Network decom complete 7/13. Parallel unracking scheduled 7/31.",knownIssues:"RISK: Lease exit timeline uncertain — landlord/Ascension negotiations ongoing.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
@@ -213,8 +210,6 @@ const SEED_PROJECTS = [
   {id:"IN162",ucmgCode:"IN162",ucmgNumber:"1334714000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete 7/17 (Ankur Khare). Parallel unracking 7/28. Carmel Specialty is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
   {id:"IN166",ucmgCode:"IN166",ucmgNumber:"1334713000",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Landlord REJECTED 50% FF&E buyout on 7/15 call. TM/Real Estate pursuing follow-up negotiations + sublease marketing.",knownIssues:"Landlord rejected FF&E buyout; IN166 large scope caused IN031 rescheduling. MDF door code: 2273#.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
   {id:"MN006",ucmgCode:"MN006",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Loading dock concrete work in progress. 3 GC proposals on file. ACI is vendor.",knownIssues:"None",estCompletion:"TBD",checklistPct:12,phase:"Construction / Decom"},
-  {id:"MN022",ucmgCode:"MN022",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Cable demo done. Convergent PO on file. Surrender letter complete. Awaiting final invoices.",knownIssues:"None",estCompletion:"TBD",checklistPct:87,phase:"Decom"},
-  {id:"MN068",ucmgCode:"MN068",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for countersignature.",knownIssues:"ACTION NEEDED: Countersign Bill of Sale — Ryan.Moore@RyanCompanies.com",estCompletion:"TBD",checklistPct:75,phase:"Construction / Decom"},
   {id:"MI086",ucmgCode:"MI086",fmLead:"Nick Allard",status:"active",weeklyUpdate:"Landlord move-out requirements received. GC SOW drafted. Bidding vendors.",knownIssues:"None",estCompletion:"Sep 26, 2026",checklistPct:0,phase:"Pre-Decom Planning"},
   {id:"OH121",ucmgCode:"OH121",ucmgNumber:"1334137000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Physical decom complete per ComNet photos 7/16. Verify Ingram Micro pickup (7/17). Confirm with Juwaan Boynton 614-565-0217.",knownIssues:"None",estCompletion:"Jul 31, 2026",checklistPct:50,phase:"Lease Surrender"},
   {id:"OH130",ucmgCode:"OH130",ucmgNumber:"1334137000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"ComNet sent decom photos 7/16 — IT decom ongoing/complete. Verify final status with Michael Massaro (mmassaro@comnetcomm.com).",knownIssues:"None",estCompletion:"Jul 31, 2026",checklistPct:50,phase:"Lease Surrender"},
@@ -224,6 +219,7 @@ const SEED_PROJECTS = [
   {id:"OH178",ucmgCode:"OH178",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"6 lease amendments on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"},
   {id:"OH193",ucmgCode:"OH193",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Lease + amendment on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"}
 ];
+/* SEED_END */
 
 // ── STATE ──────────────────────────────────────────────────────────────────
 let projects = [];
@@ -279,28 +275,6 @@ function scheduleDailyRefresh() {
   setTimeout(() => location.reload(), msUntil5am);
 }
 
-function mergeAutoData(stored, autoData) {
-  const manualMap = {};
-  (stored.projects || []).forEach(p => { manualMap[p.id] = p; });
-
-  (autoData.projects || []).forEach(ap => {
-    if (manualMap[ap.id]) {
-      // Merge: keep manual-only fields (fmLead if manually set, ucmgCode if manually set)
-      const m = manualMap[ap.id];
-      manualMap[ap.id] = Object.assign({}, ap, {
-        fmLead: m._fmLeadManual ? m.fmLead : ap.fmLead,
-        ucmgCode: m._ucmgManual ? m.ucmgCode : ap.ucmgCode,
-        _fmLeadManual: m._fmLeadManual,
-        _ucmgManual: m._ucmgManual,
-      });
-    } else {
-      manualMap[ap.id] = ap;
-    }
-  });
-
-  stored.projects = Object.values(manualMap);
-}
-
 // ── RENDER ─────────────────────────────────────────────────────────────────
 function renderAll() {
   const grid = document.getElementById('cardGrid');
@@ -348,7 +322,7 @@ function buildCard(p) {
       </div>
       <div class="card-top-right">
         <span class="${badgeClass}">${badgeText}</span>
-        <button class="edit-btn" onclick="openEditModal('${escAttr(p.id)}')">Edit</button>
+        <button class="edit-btn" data-editid="${escAttr(p.id)}">Edit</button>
       </div>
     </div>
     <div class="${fmClass}">${fmText}</div>
@@ -397,11 +371,11 @@ function enterEditMode() {
 
 function exitEditMode() {
   document.body.classList.remove('edit-mode');
-  scrollPaused = false; // resume auto-scroll
+  scrollPaused = false;
   document.getElementById('editToggleBtn').style.display = 'inline-block';
   document.getElementById('saveBtn').style.display = 'none';
   document.getElementById('addBtn').style.display = 'none';
-  persist();
+  saveToFile();
 }
 
 // ── MODAL ──────────────────────────────────────────────────────────────────
@@ -483,78 +457,98 @@ function saveModal() {
 }
 
 function deleteProject() {
-  closeAndRemove();
-}
-
-async function closeAndRemove() {
   const id = editingId;
-  if (!confirm(`Close & remove ${id} from ALL screens?\n\nThis updates GitHub directly — all screens refresh at 5am.`)) return;
-
-  // Check for token — prompt once if not set
-  let token = localStorage.getItem('gh_token') || '';
-  if (!token) {
-    token = prompt('Enter your GitHub Personal Access Token (saved locally, never uploaded):');
-    if (!token) return;
-    localStorage.setItem('gh_token', token);
-  }
-
-  // Remove from local display immediately
+  if (!id) return;
+  if (!confirm(`Remove ${id} from the dashboard?\n\nThis saves to your local file. Then push with GitHub Desktop to update the big screen.`)) return;
   projects = projects.filter(x => x.id !== id);
   closeModal();
   renderAll();
+  saveToFile();
+}
 
-  // Update GitHub file to remove project from SEED_PROJECTS
+// ── SAVE TO FILE ───────────────────────────────────────────────────────────
+async function saveToFile() {
   try {
-    const headers = {
-      'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github+json'
-    };
-
-    // Get current file content and SHA
-    const fileResp = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}`,
-      { headers }
-    );
-    const fileData = await fileResp.json();
-    const raw = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
-
-    // Remove the line containing this project id from SEED_PROJECTS
-    const updated = raw.split('\n').filter(line => {
-      return !(line.includes(`id:"${id}"`) || line.includes(`id: "${id}"`));
-    }).join('\n');
-
-    // Push updated file back to GitHub
-    const putResp = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`,
-      {
-        method: 'PUT',
-        headers: { ...headers, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: `Remove ${id} from dashboard`,
-          content: btoa(unescape(encodeURIComponent(updated))),
-          sha: fileData.sha,
-          branch: GITHUB_BRANCH
-        })
-      }
-    );
-
-    if (putResp.ok) {
-      console.log(`${id} removed from GitHub successfully.`);
-    } else {
-      const err = await putResp.json();
-      console.error('GitHub push failed:', err.message);
+    // Pick the file on first save each session
+    if (!fileHandle) {
+      [fileHandle] = await window.showOpenFilePicker({
+        types: [{ description: 'FM Dashboard HTML', accept: { 'text/html': ['.html'] } }],
+        multiple: false,
+        startIn: 'documents'
+      });
     }
+
+    // Read current file text
+    const file = await fileHandle.getFile();
+    const text = await file.text();
+
+    // Replace the SEED_PROJECTS block between markers
+    const newSeed = serializeProjects();
+    const updated = text.replace(
+      /\/\* SEED_START \*\/[\s\S]*?\/\* SEED_END \*\//,
+      '/* SEED_START */\n' + newSeed + '\n/* SEED_END */'
+    );
+
+    // Write back to the same file
+    const writable = await fileHandle.createWritable();
+    await writable.write(updated);
+    await writable.close();
+
+    const now = new Date();
+    updateLastUpdated(now.toISOString());
+    showToast('Saved to file ✓  Now push with GitHub Desktop to update the big screen.');
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ projects, lastSaved: now.toISOString() }));
   } catch(e) {
-    console.error('Could not update GitHub:', e);
+    if (e.name === 'AbortError') return; // user cancelled picker
+    // Fallback: download file
+    downloadFallback();
   }
 }
 
-// ── PERSIST ────────────────────────────────────────────────────────────────
-function persist() {
-  const data = { projects, lastSaved: new Date().toISOString() };
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  updateLastUpdated(data.lastSaved);
+function serializeProjects() {
+  const lines = projects.map(p => {
+    const ucmg = p.ucmgNumber ? `,ucmgNumber:${JSON.stringify(p.ucmgNumber)}` : '';
+    const ph   = p.phase      ? `,phase:${JSON.stringify(p.phase)}`           : '';
+    return `  {id:${JSON.stringify(p.id)},ucmgCode:${JSON.stringify(p.ucmgCode)}${ucmg},fmLead:${JSON.stringify(p.fmLead)},status:${JSON.stringify(p.status)},weeklyUpdate:${JSON.stringify(p.weeklyUpdate)},knownIssues:${JSON.stringify(p.knownIssues)},estCompletion:${JSON.stringify(p.estCompletion)},checklistPct:${p.checklistPct}${ph}}`;
+  });
+  return 'const SEED_PROJECTS = [\n' + lines.join(',\n') + '\n];';
 }
+
+function downloadFallback() {
+  // If File System Access API unavailable, trigger a download instead
+  const text = document.documentElement.outerHTML;
+  const a = document.createElement('a');
+  a.href = 'data:text/html;charset=utf-8,' + encodeURIComponent(text);
+  a.download = 'FM_Dashboard.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  showToast('Downloaded FM_Dashboard.html — replace the old file, then push with GitHub Desktop.');
+}
+
+function showToast(msg) {
+  let t = document.getElementById('saveToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'saveToast';
+    t.style.cssText = 'position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:#003F2D;border:1px solid #17E88F;color:#17E88F;padding:12px 24px;border-radius:8px;font-size:13px;font-weight:600;z-index:200;pointer-events:none;transition:opacity .4s';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 4000);
+}
+
+// ── CARD GRID EVENT DELEGATION ─────────────────────────────────────────────
+// Handles clicks on .edit-btn regardless of when cards were built
+document.getElementById('cardGrid').addEventListener('click', function(e) {
+  const btn = e.target.closest('[data-editid]');
+  if (btn) {
+    const id = btn.getAttribute('data-editid');
+    openEditModal(id);
+  }
+});
 
 // ── AUTO-SCROLL ────────────────────────────────────────────────────────────
 let autoScrollTimer = null;
