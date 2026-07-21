@@ -6,10 +6,14 @@
 <title>FM Project Status — CBRE GWS</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#001a12;color:#fff;font-family:Arial,sans-serif;min-height:100vh;padding:28px 32px}
+  body{background:#001a12;color:#fff;font-family:Arial,sans-serif;min-height:100vh;padding:0}
+
+  /* ── STICKY TOP RIBBON ── */
+  .sticky-top{position:sticky;top:0;z-index:50;background:#001a12;padding:28px 32px 16px;border-bottom:2px solid #0a3d2a}
+  .scroll-content{padding:20px 32px 28px}
 
   /* ── HEADER ── */
-  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid #0a3d2a}
+  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-bottom:0;border-bottom:none}
   .logo-bar{display:flex;align-items:center;gap:16px}
   .cbre-badge{background:#003F2D;color:#17E88F;font-size:18px;font-weight:700;letter-spacing:.08em;padding:6px 14px;border-radius:4px}
   .header-titles{display:flex;flex-direction:column;gap:4px}
@@ -24,7 +28,7 @@
   .btn-save{border-color:#17E88F;display:none}
 
   /* ── KPI STRIP ── */
-  .kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+  .kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:0}
   .kpi{background:#002a1e;border:1px solid #0a3d2a;border-radius:8px;padding:14px 18px;text-align:center}
   .kpi-num{font-size:28px;font-weight:700;color:#fff}
   .kpi-label{font-size:11px;color:#7eab95;margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
@@ -112,6 +116,7 @@
 </head>
 <body>
 
+<div class="sticky-top">
 <div class="header">
   <div class="logo-bar">
     <div class="cbre-badge">CBRE</div>
@@ -135,7 +140,9 @@
   <div class="kpi critical"><div class="kpi-num" id="kpiCritical">0</div><div class="kpi-label">Critical</div></div>
   <div class="kpi closed"><div class="kpi-num" id="kpiClosed">0</div><div class="kpi-label">Closed</div></div>
 </div>
+</div><!-- end sticky-top -->
 
+<div class="scroll-content">
 <div class="card-grid" id="cardGrid">
   <div class="add-card" onclick="openAddModal()">
     <div class="add-card-icon">+</div>
@@ -145,9 +152,10 @@
 
 <div class="dash-footer">
   <span>Data: Decom Master Tracker &nbsp;·&nbsp; CBRE GWS Facilities Management</span>
-  <span class="edit-hint" id="editHint">Edit mode — click Edit on any card to update fields. Changes save automatically.</span>
+  <span class="edit-hint" id="editHint">Edit mode — click Edit on any card to update fields. Click Done to save to file.</span>
   <span id="dataSourceNote"></span>
 </div>
+</div><!-- end scroll-content -->
 
 <!-- Edit / Add Modal -->
 <div class="modal-overlay" id="modalOverlay">
