@@ -241,47 +241,62 @@ window.addEventListener('DOMContentLoaded', () => {
   loadData();
 });
 
+const JSON_URL = 'https://raw.githubusercontent.com/jgsaund-beep/fm-dashboard/jons-claude/dashboard_data.json';
+
 async function loadData() {
-  // SEED_PROJECTS in this file is the master list — it controls what projects exist.
-  // localStorage only stores field-level edits (status, FM lead, notes) for existing projects.
-  // To add or remove a project: edit the HTML file and push to GitHub.
+  // SEED_PROJECTS controls which projects exist — JSON can only update fields, never add/remove.
 
-  let stored = {};
-  try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { stored = {}; }
-  const overrides = {};
-  (stored.projects || []).forEach(p => { overrides[p.id] = p; });
+  // 1. Start with SEED_PROJECTS as the base
+  projects = SEED_PROJECTS.map(sp => Object.assign({}, sp));
 
-  // Build from SEED_PROJECTS only — localStorage cannot add or remove projects
-  projects = SEED_PROJECTS.map(sp => {
-    const o = overrides[sp.id];
-    if (!o) return Object.assign({}, sp);
-    return Object.assign({}, sp, {
-      status:       o._statusManual     ? o.status       : sp.status,
-      fmLead:       o._fmLeadManual     ? o.fmLead       : sp.fmLead,
-      weeklyUpdate: o._weeklyManual     ? o.weeklyUpdate  : sp.weeklyUpdate,
-      knownIssues:  o._issuesManual     ? o.knownIssues   : sp.knownIssues,
-      estCompletion:o._completionManual ? o.estCompletion : sp.estCompletion,
-      checklistPct: o._pctManual        ? o.checklistPct  : sp.checklistPct,
-    });
-  });
+  // 2. Fetch dashboard_data.json from GitHub and overlay data fields only
+  //    (only runs on the big screen served over HTTP — skipped locally)
+  if (window.location.protocol !== 'file:') {
+    try {
+      const resp = await fetch(JSON_URL + '?t=' + Date.now());
+      if (resp.ok) {
+        const json = await resp.json();
+        const jsonMap = {};
+        (json.projects || []).forEach(p => { jsonMap[p.id] = p; });
 
-  document.getElementById('dataSourceNote').textContent = 'Source: GitHub — push to update all screens';
+        // Only update projects that already exist in SEED_PROJECTS — never add new ones
+        projects = projects.map(sp => {
+          const j = jsonMap[sp.id];
+          if (!j) return sp; // not in JSON → keep SEED values as-is
+          return Object.assign({}, sp, {
+            status:        j.status        || sp.status,
+            weeklyUpdate:  j.weeklyUpdate  || sp.weeklyUpdate,
+            knownIssues:   j.knownIssues   || sp.knownIssues,
+            estCompletion: j.estCompletion || sp.estCompletion,
+            checklistPct:  j.checklistPct  != null ? j.checklistPct : sp.checklistPct,
+          });
+        });
+        updateLastUpdated(json.generated || null);
+        document.getElementById('dataSourceNote').textContent = 'Live data: dashboard_data.json via GitHub';
+      }
+    } catch(e) {
+      // JSON fetch failed — silently fall back to SEED data
+      document.getElementById('dataSourceNote').textContent = 'Using local data (GitHub unreachable)';
+    }
+  } else {
+    // Local file — use SEED_PROJECTS as-is, no fetch needed
+    document.getElementById('dataSourceNote').textContent = 'Local file — push to GitHub to update big screen';
+  }
+
   renderAll();
-  updateLastUpdated(stored.lastSaved || null);
   scheduleDailyRefresh();
-  initAutoScroll(); // ← called once here, not inside renderAll
+  initAutoScroll();
 }
 
 function scheduleDailyRefresh() {
-  // Only schedule auto-reload when served over HTTP (i.e. the big screen via GitHub Pages).
-  // Skip when opened as a local file:// so editing works without interference.
+  // Only runs on the big screen (HTTP). Skipped on local file:// to avoid interfering with editing.
   if (window.location.protocol === 'file:') return;
+  // Reload at the top of every hour so the big screen picks up pushed updates within 60 minutes.
   const now = new Date();
-  const next5am = new Date(now);
-  next5am.setHours(5, 0, 0, 0);
-  if (next5am <= now) next5am.setDate(next5am.getDate() + 1);
-  const msUntil5am = next5am - now;
-  setTimeout(() => location.reload(), msUntil5am);
+  const nextHour = new Date(now);
+  nextHour.setHours(now.getHours() + 1, 0, 0, 0);
+  const msUntilNextHour = nextHour - now;
+  setTimeout(() => location.reload(), msUntilNextHour);
 }
 
 // ── RENDER ─────────────────────────────────────────────────────────────────
