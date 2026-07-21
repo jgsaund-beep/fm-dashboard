@@ -188,7 +188,7 @@
       <input class="form-input" id="fPct" type="number" min="0" max="100" placeholder="0">
     </div>
     <div class="modal-actions">
-      <button class="btn-modal-delete" id="deleteBtn" onclick="deleteProject()" style="display:none">Delete</button>
+      <button class="btn-modal-delete" id="deleteBtn" onclick="deleteProject()" style="display:none">Close & Remove</button>
       <button class="btn-modal-cancel" onclick="closeModal()">Cancel</button>
       <button class="btn-modal-save" onclick="saveModal()">Save</button>
     </div>
@@ -196,9 +196,14 @@
 </div>
 
 <script>
-// ── SEED DATA (current as of 2026-07-21) ───────────────────────────────────
-// Auto-fetch URL — pulls fresh data from GitHub each morning after automation runs
+// ── CONFIG ─────────────────────────────────────────────────────────────────
 const DATA_URL = 'https://raw.githubusercontent.com/jgsaund-beep/fm-dashboard/jons-claude/dashboard_data.json';
+const GITHUB_TOKEN  = localStorage.getItem('gh_token') || '';
+const GITHUB_REPO   = 'jgsaund-beep/fm-dashboard';
+const GITHUB_BRANCH = 'jons-claude';
+const GITHUB_FILE   = 'FM_Dashboard.html';
+
+// ── SEED DATA (current as of 2026-07-21) ───────────────────────────────────
 
 const SEED_PROJECTS = [
   {id:"IN031",ucmgCode:"IN031",ucmgNumber:"1334711000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Parallel unracking confirmed 7/22, team: Brandon Lowery (Lead), Adam Buckley, King Price. Zionsville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
@@ -232,43 +237,31 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 async function loadData() {
-  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-  const deletedIds = new Set((stored && stored.deletedIds) || []);
+  // SEED_PROJECTS in this file is the master list — it controls what projects exist.
+  // localStorage only stores field-level edits (status, FM lead, notes) for existing projects.
+  // To add or remove a project: edit the HTML file and push to GitHub.
 
-  // Try to fetch fresh data from GitHub
-  let autoData = null;
-  if (DATA_URL) {
-    try {
-      const resp = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' });
-      if (resp.ok) autoData = await resp.json();
-    } catch(e) { /* fall back to seed */ }
-  }
+  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  const overrides = {};
+  (stored.projects || []).forEach(p => { overrides[p.id] = p; });
 
-  const base = autoData || { projects: SEED_PROJECTS };
-  const manualMap = {};
-  (stored && stored.projects || []).forEach(p => { manualMap[p.id] = p; });
-
-  base.projects.forEach(ap => {
-    if (deletedIds.has(ap.id)) return;
-    if (manualMap[ap.id]) {
-      const m = manualMap[ap.id];
-      manualMap[ap.id] = Object.assign({}, ap, {
-        fmLead: m._fmLeadManual ? m.fmLead : ap.fmLead,
-        ucmgCode: m._ucmgManual ? m.ucmgCode : ap.ucmgCode,
-        _fmLeadManual: m._fmLeadManual,
-        _ucmgManual: m._ucmgManual,
-      });
-    } else {
-      manualMap[ap.id] = Object.assign({}, ap);
-    }
+  // Build from SEED_PROJECTS only — localStorage cannot add or remove projects
+  projects = SEED_PROJECTS.map(sp => {
+    const o = overrides[sp.id];
+    if (!o) return Object.assign({}, sp);
+    return Object.assign({}, sp, {
+      status:       o._statusManual     ? o.status       : sp.status,
+      fmLead:       o._fmLeadManual     ? o.fmLead       : sp.fmLead,
+      weeklyUpdate: o._weeklyManual     ? o.weeklyUpdate  : sp.weeklyUpdate,
+      knownIssues:  o._issuesManual     ? o.knownIssues   : sp.knownIssues,
+      estCompletion:o._completionManual ? o.estCompletion : sp.estCompletion,
+      checklistPct: o._pctManual        ? o.checklistPct  : sp.checklistPct,
+    });
   });
 
-  projects = Object.values(manualMap);
-  const src = autoData ? ('Auto-updated: ' + (autoData.generated ? autoData.generated.slice(0,10) : 'today')) : 'Loaded from tracker — Jul 21, 2026';
-  document.getElementById('dataSourceNote').textContent = src;
-
+  document.getElementById('dataSourceNote').textContent = 'Source: GitHub — push to update all screens';
   renderAll();
-  updateLastUpdated(stored ? stored.lastSaved : null);
+  updateLastUpdated(stored.lastSaved || null);
   scheduleDailyRefresh();
 }
 
@@ -450,9 +443,9 @@ function saveModal() {
   if (!ucmg) { alert('UCMG code is required.'); return; }
 
   if (isAdding) {
-    const newId = ucmg;
+    // Note: adding via Edit mode is temporary — to make it permanent, update SEED_PROJECTS and push to GitHub
     projects.push({
-      id: newId,
+      id: ucmg,
       ucmgCode: ucmg,
       fmLead: fmLead,
       status: document.getElementById('fStatus').value,
@@ -460,14 +453,13 @@ function saveModal() {
       knownIssues: document.getElementById('fIssues').value.trim(),
       estCompletion: document.getElementById('fCompletion').value.trim(),
       checklistPct: parseInt(document.getElementById('fPct').value) || 0,
-      _ucmgManual: true,
-      _fmLeadManual: true,
+      _ucmgManual: true, _fmLeadManual: true, _statusManual: true,
+      _weeklyManual: true, _issuesManual: true, _completionManual: true, _pctManual: true,
     });
   } else {
     const idx = projects.findIndex(x => x.id === editingId);
     if (idx === -1) return;
-    const existing = projects[idx];
-    projects[idx] = Object.assign({}, existing, {
+    projects[idx] = Object.assign({}, projects[idx], {
       ucmgCode: ucmg,
       fmLead: fmLead,
       status: document.getElementById('fStatus').value,
@@ -475,8 +467,8 @@ function saveModal() {
       knownIssues: document.getElementById('fIssues').value.trim(),
       estCompletion: document.getElementById('fCompletion').value.trim(),
       checklistPct: parseInt(document.getElementById('fPct').value) || 0,
-      _ucmgManual: true,
-      _fmLeadManual: true,
+      _ucmgManual: true, _fmLeadManual: true, _statusManual: true,
+      _weeklyManual: true, _issuesManual: true, _completionManual: true, _pctManual: true,
     });
   }
 
@@ -485,22 +477,75 @@ function saveModal() {
 }
 
 function deleteProject() {
-  if (!confirm('Remove this project from the dashboard?')) return;
-  // Remember this ID so it never gets re-added by automation
-  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  const deletedIds = stored.deletedIds || [];
-  if (!deletedIds.includes(editingId)) deletedIds.push(editingId);
-  stored.deletedIds = deletedIds;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
-  projects = projects.filter(x => x.id !== editingId);
+  closeAndRemove();
+}
+
+async function closeAndRemove() {
+  const id = editingId;
+  if (!confirm(`Close & remove ${id} from ALL screens?\n\nThis updates GitHub directly — all screens refresh at 5am.`)) return;
+
+  // Check for token — prompt once if not set
+  let token = localStorage.getItem('gh_token') || '';
+  if (!token) {
+    token = prompt('Enter your GitHub Personal Access Token (saved locally, never uploaded):');
+    if (!token) return;
+    localStorage.setItem('gh_token', token);
+  }
+
+  // Remove from local display immediately
+  projects = projects.filter(x => x.id !== id);
   closeModal();
   renderAll();
+
+  // Update GitHub file to remove project from SEED_PROJECTS
+  try {
+    const headers = {
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github+json'
+    };
+
+    // Get current file content and SHA
+    const fileResp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}?ref=${GITHUB_BRANCH}`,
+      { headers }
+    );
+    const fileData = await fileResp.json();
+    const raw = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ''))));
+
+    // Remove the line containing this project id from SEED_PROJECTS
+    const updated = raw.split('\n').filter(line => {
+      return !(line.includes(`id:"${id}"`) || line.includes(`id: "${id}"`));
+    }).join('\n');
+
+    // Push updated file back to GitHub
+    const putResp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/${GITHUB_FILE}`,
+      {
+        method: 'PUT',
+        headers: { ...headers, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: `Remove ${id} from dashboard`,
+          content: btoa(unescape(encodeURIComponent(updated))),
+          sha: fileData.sha,
+          branch: GITHUB_BRANCH
+        })
+      }
+    );
+
+    if (putResp.ok) {
+      console.log(`${id} removed from GitHub successfully.`);
+    } else {
+      const err = await putResp.json();
+      console.error('GitHub push failed:', err.message);
+    }
+  } catch(e) {
+    console.error('Could not update GitHub:', e);
+  }
 }
 
 // ── PERSIST ────────────────────────────────────────────────────────────────
 function persist() {
-  const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-  const data = { projects, lastSaved: new Date().toISOString(), deletedIds: existing.deletedIds || [] };
+  const data = { projects, lastSaved: new Date().toISOString() };
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   updateLastUpdated(data.lastSaved);
 }
