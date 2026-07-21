@@ -241,7 +241,8 @@ async function loadData() {
   // localStorage only stores field-level edits (status, FM lead, notes) for existing projects.
   // To add or remove a project: edit the HTML file and push to GitHub.
 
-  const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  let stored = {};
+  try { stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { stored = {}; }
   const overrides = {};
   (stored.projects || []).forEach(p => { overrides[p.id] = p; });
 
@@ -263,10 +264,13 @@ async function loadData() {
   renderAll();
   updateLastUpdated(stored.lastSaved || null);
   scheduleDailyRefresh();
+  initAutoScroll(); // ← called once here, not inside renderAll
 }
 
 function scheduleDailyRefresh() {
-  // Reload the page at 5am each day (after the 4am automation runs)
+  // Only schedule auto-reload when served over HTTP (i.e. the big screen via GitHub Pages).
+  // Skip when opened as a local file:// so editing works without interference.
+  if (window.location.protocol === 'file:') return;
   const now = new Date();
   const next5am = new Date(now);
   next5am.setHours(5, 0, 0, 0);
@@ -315,7 +319,7 @@ function renderAll() {
   });
 
   updateKPIs();
-  initAutoScroll();
+  // initAutoScroll is NOT called here — it's called once from loadData()
 }
 
 function buildCard(p) {
@@ -385,6 +389,7 @@ function updateLastUpdated(ts) {
 // ── EDIT MODE ──────────────────────────────────────────────────────────────
 function enterEditMode() {
   document.body.classList.add('edit-mode');
+  scrollPaused = true; // freeze auto-scroll so cards stay still while editing
   document.getElementById('editToggleBtn').style.display = 'none';
   document.getElementById('saveBtn').style.display = 'inline-block';
   document.getElementById('addBtn').style.display = 'inline-block';
@@ -392,6 +397,7 @@ function enterEditMode() {
 
 function exitEditMode() {
   document.body.classList.remove('edit-mode');
+  scrollPaused = false; // resume auto-scroll
   document.getElementById('editToggleBtn').style.display = 'inline-block';
   document.getElementById('saveBtn').style.display = 'none';
   document.getElementById('addBtn').style.display = 'none';
