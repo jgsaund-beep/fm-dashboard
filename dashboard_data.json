@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-24T07:54:55",
+  "generated": "2026-07-24T08:02:02",
   "projects": [
     {
       "id": "IN031",
@@ -7,12 +7,10 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-24] RE: IN031 Signage Removal (Jim Bridenstine/DirectPoint, 7/23): Sign vendor needs to determine timeline \u2014 pr",
-      "knownIssues": "[2026-07-24] RE: IN031 Signage Removal (Jim Bridenstine/DirectPoint, 7/23): Sign vendor needs to determine timeline \u2014 property manager (Zionsville IN0",
-      "estCompletion": "Jul 23, 2026",
+      "knownIssues": "[2026-07-24] RE: IN031 Signage Removal (Jim Bridenstine/DirectPoint, 7/23): Sign vendor needs to determine timeline \u2014 pr",
+      "estCompletion": "TBD",
       "checklistPct": 12,
-      "phase": "Site Going Dark",
-      "site": "Franklin, IN",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "IN115",
@@ -21,11 +19,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-22] IT Call 7/21: Network decom ALL Indiana sites confirmed COMPLETE. Parallel unracking 7/31 confirmed \u2014 Brand",
       "knownIssues": "None",
-      "estCompletion": "Jul 21, 2026",
+      "estCompletion": "TBD",
       "checklistPct": 12,
-      "phase": "Site Going Dark",
-      "site": "Kokomo, IN",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "IN116",
@@ -34,11 +30,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Exterior signage COMPLETE per DirectPoint (Jim Bridenstine) sign removal update 7/22. All exterior signage ",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "TBD",
       "checklistPct": 37,
-      "phase": "Site Going Dark",
-      "site": "Kokomo, IN (2341 W Lincoln Rd)",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "IN154",
@@ -47,24 +41,20 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Sign Removal update (DirectPoint 7/22): Monument signage materials ordered (different type than others). Ex",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "TBD",
       "checklistPct": 25,
-      "phase": "Site Going Dark",
-      "site": "Daleville, IN",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "IN162",
       "ucmgCode": "IN162",
       "fmLead": "Jonathon Saunders",
-      "status": "risk",
+      "status": "active",
       "weeklyUpdate": "[2026-07-24] Signage COMPLETE 7/23: (1) Interior signage removed \u2014 painting crew completed afternoon 7/23 per Jim Briden",
-      "knownIssues": "[2026-07-24] Signage COMPLETE 7/23: (1) Interior signage removed \u2014 painting crew completed afternoon 7/23 per Jim Bridenstine confirmation",
-      "estCompletion": "Jul 23, 2026",
+      "knownIssues": "None",
+      "estCompletion": "TBD",
       "checklistPct": 25,
-      "phase": "Site Going Dark",
-      "site": "Carmel, IN",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "IN166",
@@ -73,11 +63,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Exterior signage COMPLETE per DirectPoint (Jim Bridenstine) sign removal update 7/22. All exterior signage ",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "TBD",
       "checklistPct": 25,
-      "phase": "Site Going Dark",
-      "site": "Indiana (IN166)",
-      "state": "IN"
+      "phase": "Site Going Dark"
     },
     {
       "id": "MN006",
@@ -87,10 +75,8 @@
       "weeklyUpdate": "Loading dock concrete work. 3 proposals on file. Active.",
       "knownIssues": "None",
       "estCompletion": "TBD",
-      "checklistPct": 12,
-      "phase": "Construction / Decom",
-      "site": "9800 HCL / Eden Prairie, MN",
-      "state": "MN"
+      "checklistPct": 50,
+      "phase": "Construction / Decom"
     },
     {
       "id": "MN022",
@@ -101,9 +87,7 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 87,
-      "phase": "Decom",
-      "site": "12700 Whitewater Dr, Minnetonka MN",
-      "state": "MN"
+      "phase": "Decom"
     },
     {
       "id": "MN068",
@@ -114,22 +98,18 @@
       "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third",
       "estCompletion": "TBD",
       "checklistPct": 75,
-      "phase": "Construction / Decom",
-      "site": "Rally Health / Millwright, MN",
-      "state": "MN"
+      "phase": "Construction / Decom"
     },
     {
       "id": "MI086",
       "ucmgCode": "MI086",
-      "fmLead": "Jonathon Saunders",
+      "fmLead": "Nick Allard",
       "status": "active",
       "weeklyUpdate": "[2026-07-24] Siwek Construction (Jesse Anderson, janderson@siwekcc.com) confirmed 7/23: Chad from their team reached out",
       "knownIssues": "None",
-      "estCompletion": "Jul 23, 2026",
+      "estCompletion": "TBD",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning",
-      "site": "Clinton Township, MI",
-      "state": "MI"
+      "phase": "Pre-Decom Planning"
     },
     {
       "id": "OH121",
@@ -138,11 +118,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) confirms OH121 COMPLETE as of 7/23. All work finished.",
       "knownIssues": "None",
-      "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender",
-      "site": "Ohio (OH121)",
-      "state": "OH"
+      "estCompletion": "TBD",
+      "checklistPct": 57,
+      "phase": "Lease Surrender"
     },
     {
       "id": "OH130",
@@ -151,11 +129,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) confirms OH130 COMPLETE as of 7/23. All work finished.",
       "knownIssues": "None",
-      "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender",
-      "site": "Ohio (OH130)",
-      "state": "OH"
+      "estCompletion": "TBD",
+      "checklistPct": 57,
+      "phase": "Lease Surrender"
     },
     {
       "id": "OH133",
@@ -164,11 +140,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-24] Lehman Daman (Bryce Bammerlin) completing TODAY 7/24: removing remainder of furniture, patching walls, touc",
       "knownIssues": "None",
-      "estCompletion": "Jul 24, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender",
-      "site": "Ohio (OH133)",
-      "state": "OH"
+      "estCompletion": "TBD",
+      "checklistPct": 57,
+      "phase": "Lease Surrender"
     },
     {
       "id": "OH145",
@@ -177,11 +151,9 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) update 7/23: OH145 completing TODAY \u2014 furniture disposal + drywall patching ",
       "knownIssues": "None",
-      "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Site Going Dark",
-      "site": "Ohio (OH145)",
-      "state": "OH"
+      "estCompletion": "TBD",
+      "checklistPct": 57,
+      "phase": "Site Going Dark"
     },
     {
       "id": "OH166",
@@ -189,12 +161,10 @@
       "fmLead": "Jonathon Saunders",
       "status": "critical",
       "weeklyUpdate": "[2026-07-24] KRAFT PRINTER PICKUP TODAY 7/24 8AM-12PM: Jonathan Carter (jonathan_carter@optum.com) confirmed Kraft Print",
-      "knownIssues": "[2026-07-21] DECOM STATUS UPDATE: Physical Optum gear decom COMPLETED 7/20. Ingram Micro cleared Operators closet 7/20. BLOCKER: One fiber item remain",
-      "estCompletion": "Jul 24, 2026",
-      "checklistPct": 12,
-      "phase": "Decom - IT Return Tonight 7/23",
-      "site": "Ohio (OH166)",
-      "state": "OH"
+      "knownIssues": "One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; mislabeled, serves OH1",
+      "estCompletion": "TBD",
+      "checklistPct": 33,
+      "phase": "Decom - IT Return Tonight 7/23"
     },
     {
       "id": "OH178",
@@ -205,9 +175,7 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning",
-      "site": "Tallmadge, OH",
-      "state": "OH"
+      "phase": "Pre-Decom Planning"
     },
     {
       "id": "OH193",
@@ -218,9 +186,7 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning",
-      "site": "Stow, OH",
-      "state": "OH"
+      "phase": "Pre-Decom Planning"
     }
   ]
 }
