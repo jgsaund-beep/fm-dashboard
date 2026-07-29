@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-28T07:55:41",
+  "generated": "2026-07-29T07:58:27",
   "projects": [
     {
       "id": "IN031",
@@ -7,7 +7,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final IT inventory 7/27. Am",
-      "knownIssues": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final I",
+      "knownIssues": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final IT inventory 7/27. Am",
       "estCompletion": "Jul 27, 2026",
       "checklistPct": 25,
       "phase": "Site Going Dark"
@@ -51,7 +51,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth Cameron. Monitor for ",
-      "knownIssues": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth C",
+      "knownIssues": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth Cameron. Monitor for ",
       "estCompletion": "Jul 28, 2026",
       "checklistPct": 25,
       "phase": "Site Going Dark"
@@ -95,7 +95,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
-      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Wa",
+      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
       "estCompletion": "TBD",
       "checklistPct": 75,
       "phase": "Construction / Decom"
@@ -105,9 +105,9 @@
       "ucmgCode": "MI086",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-07-28] Siwek Construction (Chad Dewald, cdewald@siwekcc.com) confirmed available early August for site walkthrough",
-      "knownIssues": "[2026-07-28] Siwek Construction (Chad Dewald, cdewald@siwekcc.com) confirmed available early August ",
-      "estCompletion": "Jul 23, 2026",
+      "weeklyUpdate": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
+      "knownIssues": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
+      "estCompletion": "Jul 28, 2026",
       "checklistPct": 0,
       "phase": "Pre-Decom Planning"
     },
@@ -127,7 +127,7 @@
       "ucmgCode": "OH130",
       "fmLead": "Jonathon Saunders",
       "status": "active",
-      "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) confirms OH130 COMPLETE as of 7/23. All work finished.",
+      "weeklyUpdate": "[2026-07-29] Work order CS3772324 submitted \u2013 equipment pickup in progress. Nathan Rea (Optum, nathan_rea@optum.com) con",
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
       "checklistPct": 50,
@@ -161,7 +161,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "critical",
       "weeklyUpdate": "[2026-07-24] KRAFT PRINTER PICKUP TODAY 7/24 8AM-12PM: Jonathan Carter (jonathan_carter@optum.com) confirmed Kraft Print",
-      "knownIssues": "BLOCKER: One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; m",
+      "knownIssues": "[2026-07-21] DECOM STATUS UPDATE: Physical Optum gear decom COMPLETED 7/20. Ingram Micro cleared Operators closet 7/20. ",
       "estCompletion": "Jul 24, 2026",
       "checklistPct": 12,
       "phase": "Decom - IT Return Tonight 7/23"
