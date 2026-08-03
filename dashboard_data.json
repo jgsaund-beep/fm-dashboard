@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-30T07:55:04",
+  "generated": "2026-08-03T08:10:24",
   "projects": [
     {
       "id": "IN031",
@@ -7,10 +7,16 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final IT inventory 7/27. Am",
-      "knownIssues": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final I",
-      "estCompletion": "Jul 27, 2026",
+      "knownIssues": "[2026-07-28] Parallel Technologies (Jessica Stoneburg, jstoneburg@ptnet.com) submitted IN031 final IT inventory 7/27. Am",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Franklin, IN",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\ud83d\udd04 In Progress",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "IN115",
@@ -19,9 +25,15 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-22] IT Call 7/21: Network decom ALL Indiana sites confirmed COMPLETE. Parallel unracking 7/31 confirmed \u2014 Brand",
       "knownIssues": "None",
-      "estCompletion": "Jul 21, 2026",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 12,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Kokomo, IN",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\ud83d\udd04 In Progress",
+      "it": "\ud83d\udd04 In Progress",
+      "cpt": "\u274c No"
     },
     {
       "id": "IN116",
@@ -30,9 +42,15 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Exterior signage COMPLETE per DirectPoint (Jim Bridenstine) sign removal update 7/22. All exterior signage ",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 37,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Kokomo, IN (2341 W Lincoln Rd)",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "IN154",
@@ -41,9 +59,15 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-23] Sign Removal update (DirectPoint 7/22): Monument signage materials ordered (different type than others). Ex",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Daleville, IN",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\ud83d\udd04 In Progress",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "IN162",
@@ -51,10 +75,16 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth Cameron. Monitor for ",
-      "knownIssues": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth C",
-      "estCompletion": "Jul 28, 2026",
+      "knownIssues": "[2026-07-28] Parallel Technologies unracking TODAY 7/28 \u2014 Brandon Lowery (Lead), Zach Pardue, Seth Cameron. Monitor for ",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Carmel, IN",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\ud83d\udd04 In Progress",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "IN166",
@@ -63,9 +93,15 @@
       "status": "active",
       "weeklyUpdate": "[2026-07-30] TRAC IT Request T26070111 submitted 2026-07-29 by Amit Bhardwaj (Optum ITAM). Truck pickup scheduled \u2014 38 D",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
+      "estCompletion": "Aug 31, 2026",
       "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Indiana (IN166)",
+      "state": "IN",
+      "po": "\u2705 Yes",
+      "sign": "\u2705 Yes",
+      "it": "\ud83d\udd04 In Progress",
+      "cpt": "\u274c No"
     },
     {
       "id": "MN006",
@@ -76,7 +112,13 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 12,
-      "phase": "Construction / Decom"
+      "phase": "Construction / Decom",
+      "name": "9800 HCL / Eden Prairie, MN",
+      "state": "MN",
+      "po": "\u2705 Yes",
+      "sign": "N/A",
+      "it": "N/A",
+      "cpt": "\u274c No"
     },
     {
       "id": "MN022",
@@ -87,7 +129,13 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 87,
-      "phase": "Decom"
+      "phase": "Decom",
+      "name": "12700 Whitewater Dr, Minnetonka MN",
+      "state": "MN",
+      "po": "\u2705 Yes",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\ud83d\udd04 In Progress"
     },
     {
       "id": "MN068",
@@ -95,10 +143,16 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
-      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Wa",
+      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
       "estCompletion": "TBD",
       "checklistPct": 75,
-      "phase": "Construction / Decom"
+      "phase": "Construction / Decom",
+      "name": "Rally Health / Millwright, MN",
+      "state": "MN",
+      "po": "\u2705 Yes",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\ud83d\udd04 In Progress"
     },
     {
       "id": "MI086",
@@ -106,10 +160,16 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
-      "knownIssues": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both f",
-      "estCompletion": "Jul 28, 2026",
+      "knownIssues": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
+      "estCompletion": "Jul 09, 2026",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "phase": "Pre-Decom Planning",
+      "name": "Clinton Township, MI",
+      "state": "MI",
+      "po": "\u274c No",
+      "sign": "\u274c No",
+      "it": "\u274c No",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH121",
@@ -120,7 +180,13 @@
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
       "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "phase": "Lease Surrender",
+      "name": "Ohio (OH121)",
+      "state": "OH",
+      "po": "N/A",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH130",
@@ -131,7 +197,13 @@
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
       "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "phase": "Lease Surrender",
+      "name": "Ohio (OH130)",
+      "state": "OH",
+      "po": "N/A",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH133",
@@ -142,7 +214,13 @@
       "knownIssues": "None",
       "estCompletion": "Jul 24, 2026",
       "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "phase": "Lease Surrender",
+      "name": "Ohio (OH133)",
+      "state": "OH",
+      "po": "N/A",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH145",
@@ -153,7 +231,13 @@
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
       "checklistPct": 50,
-      "phase": "Site Going Dark"
+      "phase": "Site Going Dark",
+      "name": "Ohio (OH145)",
+      "state": "OH",
+      "po": "N/A",
+      "sign": "\u2705 Yes",
+      "it": "\u2705 Yes",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH166",
@@ -161,10 +245,16 @@
       "fmLead": "Jonathon Saunders",
       "status": "critical",
       "weeklyUpdate": "[2026-07-24] KRAFT PRINTER PICKUP TODAY 7/24 8AM-12PM: Jonathan Carter (jonathan_carter@optum.com) confirmed Kraft Print",
-      "knownIssues": "BLOCKER: CLEARED. ComNet scheduled 5PM TONIGHT 7/23 to cut fiber, complete Operators room decom, splice junct",
+      "knownIssues": "BLOCKER: One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; mislabeled, s",
       "estCompletion": "Jul 24, 2026",
       "checklistPct": 12,
-      "phase": "Decom - IT Return Tonight 7/23"
+      "phase": "Decom - IT Return Tonight 7/23",
+      "name": "Ohio (OH166)",
+      "state": "OH",
+      "po": "\u2705 Yes",
+      "sign": "N/A",
+      "it": "\ud83d\udd04 In Progress",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH178",
@@ -175,7 +265,13 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "phase": "Pre-Decom Planning",
+      "name": "Tallmadge, OH",
+      "state": "OH",
+      "po": "\u274c No",
+      "sign": "\u274c No",
+      "it": "\u274c No",
+      "cpt": "\u274c No"
     },
     {
       "id": "OH193",
@@ -186,7 +282,13 @@
       "knownIssues": "None",
       "estCompletion": "TBD",
       "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "phase": "Pre-Decom Planning",
+      "name": "Stow, OH",
+      "state": "OH",
+      "po": "\u274c No",
+      "sign": "\u274c No",
+      "it": "\u274c No",
+      "cpt": "\u274c No"
     }
   ]
 }
