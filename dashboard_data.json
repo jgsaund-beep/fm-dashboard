@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-11T12:53:00",
+  "generated": "2026-08-12T13:17:31",
   "projects": [
     {
       "id": "IN031",
@@ -7,7 +7,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "risk",
       "weeklyUpdate": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 Bennet Pkwy). Arriva",
-      "knownIssues": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 Bennet Pkwy). Arriva",
+      "knownIssues": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 ",
       "estCompletion": "Jul 27, 2026",
       "checklistPct": 25,
       "phase": "Site Going Dark"
@@ -17,9 +17,9 @@
       "ucmgCode": "IN115",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-08-11] BLOCKER: Ingram Micro WO CS3800558 proposed pickup 8/10 (9-11am). No confirmation of completion received \u2014 ",
-      "knownIssues": "Ingram Micro WO CS3800558 proposed pickup 8/10 (9-11am). No confirmation of completion received \u2014 ACTION REQUIRED: verif",
-      "estCompletion": "Aug 10, 2026",
+      "weeklyUpdate": "[2026-08-12] UPDATE: Ingram Micro WO CS3800558 CONFIRMED for 8/13/2026, 12:00-14:00 arrival (Kokomo, 2330 S Dixon Rd). L",
+      "knownIssues": "BLOCKER: Ingram Micro WO CS3800558 proposed pickup 8/10 (9-11am). No confirmation of completion received \u2014 AC",
+      "estCompletion": "Aug 13, 2026",
       "checklistPct": 12,
       "phase": "Site Going Dark"
     },
@@ -28,9 +28,9 @@
       "ucmgCode": "IN116",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-08-11] BLOCKER: Inventory mismatch flagged by Amit Bhardwaj (amit_bhardwaj52@optum.com) \u2014 asked Jessica Stoneburg-",
-      "knownIssues": "Inventory mismatch flagged by Amit Bhardwaj (amit_bhardwaj52@optum.com) \u2014 asked Jessica Stoneburg-Kray to revalidate IN1",
-      "estCompletion": "Jul 22, 2026",
+      "weeklyUpdate": "[2026-08-12] RESOLVED: Ingram Micro WO CS3804959 CONFIRMED for 8/13/2026, 12:00-14:00 arrival (Kokomo, 2341 W Lincoln Rd",
+      "knownIssues": "BLOCKER: Inventory mismatch flagged by Amit Bhardwaj (amit_bhardwaj52@optum.com) \u2014 asked Jessica Stoneburg-Kr",
+      "estCompletion": "Aug 13, 2026",
       "checklistPct": 37,
       "phase": "Site Going Dark"
     },
@@ -50,8 +50,8 @@
       "ucmgCode": "IN162",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-08-11] ACTION REQUIRED: Ingram Micro WO CS3806890 / TRAC T26080034 \u2014 awaiting scheduling confirmation for 8/17 (11",
-      "knownIssues": "[2026-08-11] ACTION REQUIRED: Ingram Micro WO CS3806890 / TRAC T26080034 \u2014 awaiting scheduling confirmation for 8/17 (11",
+      "weeklyUpdate": "[2026-08-12] CONFIRMED: Ingram Micro WO CS3806890 CONFIRMED for 8/17/2026, 12:00-14:00 arrival (Carmel, 12174 N Meridian",
+      "knownIssues": "[2026-08-12] CONFIRMED: Ingram Micro WO CS3806890 CONFIRMED for 8/17/2026, 12:00-14:00 arrival (Carm",
       "estCompletion": "Aug 17, 2026",
       "checklistPct": 25,
       "phase": "Site Going Dark"
@@ -61,10 +61,10 @@
       "ucmgCode": "IN166",
       "fmLead": "Jonathon Saunders",
       "status": "active",
-      "weeklyUpdate": "[2026-07-30] TRAC IT Request T26070111 submitted 2026-07-29 by Amit Bhardwaj (Optum ITAM). Truck pickup scheduled \u2014 38 D",
+      "weeklyUpdate": "[2026-08-12] Ingram Micro PICKUP COMPLETED 8/6/2026 (Franklin, 990 E State Road 44). IT equipment disposal complete per ",
       "knownIssues": "None",
-      "estCompletion": "Jul 22, 2026",
-      "checklistPct": 25,
+      "estCompletion": "Aug 06, 2026",
+      "checklistPct": 37,
       "phase": "Site Going Dark"
     },
     {
@@ -93,9 +93,9 @@
       "id": "MN068",
       "ucmgCode": "MN068",
       "fmLead": "Jonathon Saunders",
-      "status": "active",
+      "status": "risk",
       "weeklyUpdate": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
-      "knownIssues": "None",
+      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Wa",
       "estCompletion": "TBD",
       "checklistPct": 75,
       "phase": "Construction / Decom"
@@ -104,9 +104,9 @@
       "id": "MI086",
       "ucmgCode": "MI086",
       "fmLead": "Jonathon Saunders",
-      "status": "active",
+      "status": "risk",
       "weeklyUpdate": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
-      "knownIssues": "None",
+      "knownIssues": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both f",
       "estCompletion": "Jul 28, 2026",
       "checklistPct": 0,
       "phase": "Pre-Decom Planning"
@@ -161,7 +161,7 @@
       "fmLead": "Jonathon Saunders",
       "status": "critical",
       "weeklyUpdate": "[2026-07-24] KRAFT PRINTER PICKUP TODAY 7/24 8AM-12PM: Jonathan Carter (jonathan_carter@optum.com) confirmed Kraft Print",
-      "knownIssues": "One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; mislabeled, serves OH1",
+      "knownIssues": "BLOCKER: One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; mi",
       "estCompletion": "Jul 24, 2026",
       "checklistPct": 12,
       "phase": "Decom - IT Return Tonight 7/23"
