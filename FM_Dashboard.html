@@ -167,6 +167,10 @@
       <input class="form-input" id="fUcmg" placeholder="e.g. OH166" maxlength="10">
     </div>
     <div class="form-row">
+      <label class="form-label">Site Address</label>
+      <input class="form-input" id="fAddress" placeholder="e.g. 2341 W Lincoln Rd, Kokomo, IN 46902">
+    </div>
+    <div class="form-row">
       <label class="form-label">FM Lead</label>
       <input class="form-input" id="fFmLead" placeholder="e.g. Sarah Mitchell">
     </div>
@@ -212,17 +216,17 @@ let fileHandle = null; // File System Access API handle (set on first save)
 // ── SEED DATA ──────────────────────────────────────────────────────────────
 /* SEED_START */
 const SEED_PROJECTS = [
-  {id:"IN031",ucmgCode:"IN031",ucmgNumber:"1334711000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Parallel unracking confirmed 7/22, team: Brandon Lowery (Lead), Adam Buckley, King Price. Zionsville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
-  {id:"IN115",ucmgCode:"IN115",ucmgNumber:"1334707000",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Network decom complete 7/13. Parallel unracking scheduled 7/31.",knownIssues:"RISK: Lease exit timeline uncertain — landlord/Ascension negotiations ongoing.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
-  {id:"IN116",ucmgCode:"IN116",ucmgNumber:"1334709000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete (Ankur Khare 7/16). Parallel unracking 7/31. Buyout approved, agreement finalization in progress.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
-  {id:"IN154",ucmgCode:"IN154",ucmgNumber:"1334712000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete 7/16 (Ankur Khare). Parallel unracking 7/28-7/31. Daleville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
-  {id:"IN162",ucmgCode:"IN162",ucmgNumber:"1334714000",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete 7/17 (Ankur Khare). Parallel unracking 7/28. Carmel Specialty is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
-  {id:"IN166",ucmgCode:"IN166",ucmgNumber:"1334713000",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Landlord REJECTED 50% FF&E buyout on 7/15 call. TM/Real Estate pursuing follow-up negotiations + sublease marketing.",knownIssues:"Landlord rejected FF&E buyout; IN166 large scope caused IN031 rescheduling. MDF door code: 2273#.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
-  {id:"MN006",ucmgCode:"MN006",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Loading dock concrete work in progress. 3 GC proposals on file. ACI is vendor.",knownIssues:"None",estCompletion:"TBD",checklistPct:12,phase:"Construction / Decom"},
-  {id:"MI086",ucmgCode:"MI086",fmLead:"Nick Allard",status:"active",weeklyUpdate:"Landlord move-out requirements received. GC SOW drafted. Bidding vendors.",knownIssues:"None",estCompletion:"Sep 26, 2026",checklistPct:0,phase:"Pre-Decom Planning"},
-  {id:"OH178",ucmgCode:"OH178",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"6 lease amendments on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"},
-  {id:"OH193",ucmgCode:"OH193",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Lease + amendment on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"},
-  {id:"IN030",ucmgCode:"IN030",fmLead:"Jonathan Saunders",status:"active",weeklyUpdate:"",knownIssues:"IT removal from Sub-Leased spaces",estCompletion:"TBD",checklistPct:0}
+  {id:"IN031",ucmgCode:"IN031",ucmgNumber:"1334711000",address:"Zionsville, IN",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Parallel unracking confirmed 7/22, team: Brandon Lowery (Lead), Adam Buckley, King Price. Zionsville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
+  {id:"IN115",ucmgCode:"IN115",ucmgNumber:"1334707000",address:"2330 Centennial Blvd, Kokomo, IN",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Network decom complete 7/13. Parallel unracking scheduled 7/31.",knownIssues:"RISK: Lease exit timeline uncertain — landlord/Ascension negotiations ongoing.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
+  {id:"IN116",ucmgCode:"IN116",ucmgNumber:"1334709000",address:"2341 W Lincoln Rd, Kokomo, IN 46902",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete (Ankur Khare 7/16). Parallel unracking 7/31. Buyout approved, agreement finalization in progress.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
+  {id:"IN154",ucmgCode:"IN154",ucmgNumber:"1334712000",address:"Daleville, IN",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete 7/16 (Ankur Khare). Parallel unracking 7/28-7/31. Daleville is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
+  {id:"IN162",ucmgCode:"IN162",ucmgNumber:"1334714000",address:"1217 Keystone Way N, Carmel, IN",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Network shutdown complete 7/17 (Ankur Khare). Parallel unracking 7/28. Carmel Specialty is designated redeployment hub.",knownIssues:"None",estCompletion:"Aug 31, 2026",checklistPct:25,phase:"Site Going Dark"},
+  {id:"IN166",ucmgCode:"IN166",ucmgNumber:"1334713000",address:"Franklin, IN",fmLead:"Jonathon Saunders",status:"risk",weeklyUpdate:"Landlord REJECTED 50% FF&E buyout on 7/15 call. TM/Real Estate pursuing follow-up negotiations + sublease marketing.",knownIssues:"Landlord rejected FF&E buyout; IN166 large scope caused IN031 rescheduling. MDF door code: 2273#.",estCompletion:"Aug 31, 2026",checklistPct:12,phase:"Site Going Dark"},
+  {id:"MN006",ucmgCode:"MN006",address:"9800 HCI Dr, Eden Prairie, MN",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Loading dock concrete work in progress. 3 GC proposals on file. ACI is vendor.",knownIssues:"None",estCompletion:"TBD",checklistPct:12,phase:"Construction / Decom"},
+  {id:"MI086",ucmgCode:"MI086",address:"Clinton Township, MI",fmLead:"Nick Allard",status:"active",weeklyUpdate:"Landlord move-out requirements received. GC SOW drafted. Bidding vendors.",knownIssues:"None",estCompletion:"Sep 26, 2026",checklistPct:0,phase:"Pre-Decom Planning"},
+  {id:"OH178",ucmgCode:"OH178",address:"Tallmadge, OH",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"6 lease amendments on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"},
+  {id:"OH193",ucmgCode:"OH193",address:"Stow, OH",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"Lease + amendment on file. FM move-out requirements received. GC SOW needed.",knownIssues:"None",estCompletion:"TBD",checklistPct:0,phase:"Pre-Decom Planning"},
+  {id:"IN030",ucmgCode:"IN030",address:"Indiana",fmLead:"Jonathon Saunders",status:"active",weeklyUpdate:"",knownIssues:"IT removal from Sub-Leased spaces",estCompletion:"TBD",checklistPct:0}
 ];
 /* SEED_END */
 
@@ -408,6 +412,7 @@ function openEditModal(id) {
   isAdding = false;
   document.getElementById('modalTitle').textContent = 'Edit project — ' + (p.ucmgCode || id);
   document.getElementById('fUcmg').value = p.ucmgCode || '';
+  document.getElementById('fAddress').value = p.address || '';
   document.getElementById('fFmLead').value = p.fmLead || '';
   document.getElementById('fStatus').value = p.status || 'active';
   document.getElementById('fWeekly').value = p.weeklyUpdate || '';
@@ -423,6 +428,7 @@ function openAddModal() {
   isAdding = true;
   document.getElementById('modalTitle').textContent = 'Add new project';
   document.getElementById('fUcmg').value = '';
+  document.getElementById('fAddress').value = '';
   document.getElementById('fFmLead').value = '';
   document.getElementById('fStatus').value = 'active';
   document.getElementById('fWeekly').value = '';
@@ -449,6 +455,7 @@ function saveModal() {
     projects.push({
       id: ucmg,
       ucmgCode: ucmg,
+      address: document.getElementById('fAddress').value.trim(),
       fmLead: fmLead,
       status: document.getElementById('fStatus').value,
       weeklyUpdate: document.getElementById('fWeekly').value.trim(),
@@ -463,6 +470,7 @@ function saveModal() {
     if (idx === -1) return;
     projects[idx] = Object.assign({}, projects[idx], {
       ucmgCode: ucmg,
+      address: document.getElementById('fAddress').value.trim(),
       fmLead: fmLead,
       status: document.getElementById('fStatus').value,
       weeklyUpdate: document.getElementById('fWeekly').value.trim(),
@@ -530,8 +538,9 @@ async function saveToFile() {
 function serializeProjects() {
   const lines = projects.map(p => {
     const ucmg = p.ucmgNumber ? `,ucmgNumber:${JSON.stringify(p.ucmgNumber)}` : '';
+    const addr = p.address    ? `,address:${JSON.stringify(p.address)}`        : '';
     const ph   = p.phase      ? `,phase:${JSON.stringify(p.phase)}`           : '';
-    return `  {id:${JSON.stringify(p.id)},ucmgCode:${JSON.stringify(p.ucmgCode)}${ucmg},fmLead:${JSON.stringify(p.fmLead)},status:${JSON.stringify(p.status)},weeklyUpdate:${JSON.stringify(p.weeklyUpdate)},knownIssues:${JSON.stringify(p.knownIssues)},estCompletion:${JSON.stringify(p.estCompletion)},checklistPct:${p.checklistPct}${ph}}`;
+    return `  {id:${JSON.stringify(p.id)},ucmgCode:${JSON.stringify(p.ucmgCode)}${ucmg}${addr},fmLead:${JSON.stringify(p.fmLead)},status:${JSON.stringify(p.status)},weeklyUpdate:${JSON.stringify(p.weeklyUpdate)},knownIssues:${JSON.stringify(p.knownIssues)},estCompletion:${JSON.stringify(p.estCompletion)},checklistPct:${p.checklistPct}${ph}}`;
   });
   return 'const SEED_PROJECTS = [\n' + lines.join(',\n') + '\n];';
 }
