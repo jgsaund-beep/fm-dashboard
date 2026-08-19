@@ -1,192 +1,192 @@
 {
-  "generated": "2026-08-12T13:17:31",
+  "generated": "2026-08-19T12:55:43",
   "projects": [
     {
       "id": "IN031",
       "ucmgCode": "IN031",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
+      "phase": "Site Going Dark",
       "weeklyUpdate": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 Bennet Pkwy). Arriva",
-      "knownIssues": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 ",
+      "knownIssues": "[2026-08-11] Ingram Micro WO CS3797115 PICKUP CONFIRMED AND COMPLETED 2026-08-07 (Zionsville, 10649 Bennet Pkwy). Arriva",
       "estCompletion": "Jul 27, 2026",
-      "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "checklistPct": 25
     },
     {
       "id": "IN115",
       "ucmgCode": "IN115",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-08-12] UPDATE: Ingram Micro WO CS3800558 CONFIRMED for 8/13/2026, 12:00-14:00 arrival (Kokomo, 2330 S Dixon Rd). L",
-      "knownIssues": "BLOCKER: Ingram Micro WO CS3800558 proposed pickup 8/10 (9-11am). No confirmation of completion received \u2014 AC",
+      "phase": "Site Going Dark",
+      "weeklyUpdate": "[2026-08-19] ACTION: Ron Wallace (AHN/Optum Director of Logistics, karon_wallace@ahni.com, 317-590-6457) asking if IN115",
+      "knownIssues": "[2026-08-11] BLOCKER: Ingram Micro WO CS3800558 proposed pickup 8/10 (9-11am). No confirmation of completion received \u2014 ",
       "estCompletion": "Aug 13, 2026",
-      "checklistPct": 12,
-      "phase": "Site Going Dark"
+      "checklistPct": 12
     },
     {
       "id": "IN116",
       "ucmgCode": "IN116",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-08-12] RESOLVED: Ingram Micro WO CS3804959 CONFIRMED for 8/13/2026, 12:00-14:00 arrival (Kokomo, 2341 W Lincoln Rd",
-      "knownIssues": "BLOCKER: Inventory mismatch flagged by Amit Bhardwaj (amit_bhardwaj52@optum.com) \u2014 asked Jessica Stoneburg-Kr",
+      "phase": "Site Going Dark",
+      "weeklyUpdate": "[2026-08-19] ACTION: Ron Wallace (AHN/Optum Director of Logistics, karon_wallace@ahni.com, 317-590-6457) asking if IN116",
+      "knownIssues": "[2026-08-11] BLOCKER: Inventory mismatch flagged by Amit Bhardwaj (amit_bhardwaj52@optum.com) \u2014 asked Jessica Stoneburg-",
       "estCompletion": "Aug 13, 2026",
-      "checklistPct": 37,
-      "phase": "Site Going Dark"
+      "checklistPct": 37
     },
     {
       "id": "IN154",
       "ucmgCode": "IN154",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Site Going Dark",
       "weeklyUpdate": "[2026-08-11] Ingram Micro WO CS3805206 CONFIRMED for 8/14/2026, 12-2pm arrival (Daleville, 14745 W Commerce Rd). James M",
       "knownIssues": "None",
       "estCompletion": "Aug 14, 2026",
-      "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "checklistPct": 25
     },
     {
       "id": "IN162",
       "ucmgCode": "IN162",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
+      "phase": "Site Going Dark",
       "weeklyUpdate": "[2026-08-12] CONFIRMED: Ingram Micro WO CS3806890 CONFIRMED for 8/17/2026, 12:00-14:00 arrival (Carmel, 12174 N Meridian",
-      "knownIssues": "[2026-08-12] CONFIRMED: Ingram Micro WO CS3806890 CONFIRMED for 8/17/2026, 12:00-14:00 arrival (Carm",
+      "knownIssues": "[2026-08-12] CONFIRMED: Ingram Micro WO CS3806890 CONFIRMED for 8/17/2026, 12:00-14:00 arrival (Carmel, 12174 N Meridian",
       "estCompletion": "Aug 17, 2026",
-      "checklistPct": 25,
-      "phase": "Site Going Dark"
+      "checklistPct": 25
     },
     {
       "id": "IN166",
       "ucmgCode": "IN166",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Site Going Dark",
       "weeklyUpdate": "[2026-08-12] Ingram Micro PICKUP COMPLETED 8/6/2026 (Franklin, 990 E State Road 44). IT equipment disposal complete per ",
       "knownIssues": "None",
       "estCompletion": "Aug 06, 2026",
-      "checklistPct": 37,
-      "phase": "Site Going Dark"
+      "checklistPct": 37
     },
     {
       "id": "MN006",
       "ucmgCode": "MN006",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Construction / Decom",
       "weeklyUpdate": "[2026-07-30] ACI (James Smith, james.smith@aciasphalt.com) sent SOV 2026-07-29. COI update pending \u2014 James to send when ",
       "knownIssues": "None",
       "estCompletion": "TBD",
-      "checklistPct": 12,
-      "phase": "Construction / Decom"
+      "checklistPct": 12
     },
     {
       "id": "MN022",
       "ucmgCode": "MN022",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Decom",
       "weeklyUpdate": "Cable demo done. Convergent PO on file. Surrender letter complete. Awaiting final invoices.",
       "knownIssues": "None",
       "estCompletion": "TBD",
-      "checklistPct": 87,
-      "phase": "Decom"
+      "checklistPct": 87
     },
     {
       "id": "MN068",
       "ucmgCode": "MN068",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
+      "phase": "Construction / Decom",
       "weeklyUpdate": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
-      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Wa",
+      "knownIssues": "[2026-07-16] ACTION NEEDED: Ryan Moore (Ryan Companies) sent signed Bill of Sale for 533 S Third. Waiting for Jonathan/G",
       "estCompletion": "TBD",
-      "checklistPct": 75,
-      "phase": "Construction / Decom"
+      "checklistPct": 75
     },
     {
       "id": "MI086",
       "ucmgCode": "MI086",
       "fmLead": "Jonathon Saunders",
       "status": "risk",
-      "weeklyUpdate": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both floors. Site dark 7/9",
-      "knownIssues": "[2026-07-29] IT Project call MOM 7/28: Full site decom confirmed \u2013 cables, racks, IT & non-IT both f",
-      "estCompletion": "Jul 28, 2026",
-      "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "phase": "Pre-Decom Planning",
+      "weeklyUpdate": "[2026-08-19] Full decom CHG3305293 submitted 8/17 (Kamlesh Chavan, kamlesh_chavan@optum.com, Optum Network Eng). Network",
+      "knownIssues": "[2026-08-19] Full decom CHG3305293 submitted 8/17 (Kamlesh Chavan, kamlesh_chavan@optum.com, Optum Network Eng). Network",
+      "estCompletion": "Aug 17, 2026",
+      "checklistPct": 0
     },
     {
       "id": "OH121",
       "ucmgCode": "OH121",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Lease Surrender",
       "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) confirms OH121 COMPLETE as of 7/23. All work finished.",
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "checklistPct": 50
     },
     {
       "id": "OH130",
       "ucmgCode": "OH130",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Lease Surrender",
       "weeklyUpdate": "[2026-07-29] Work order CS3772324 submitted \u2013 equipment pickup in progress. Nathan Rea (Optum, nathan_rea@optum.com) con",
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "checklistPct": 50
     },
     {
       "id": "OH133",
       "ucmgCode": "OH133",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Lease Surrender",
       "weeklyUpdate": "[2026-07-24] Lehman Daman (Bryce Bammerlin) completing TODAY 7/24: removing remainder of furniture, patching walls, touc",
       "knownIssues": "None",
       "estCompletion": "Jul 24, 2026",
-      "checklistPct": 50,
-      "phase": "Lease Surrender"
+      "checklistPct": 50
     },
     {
       "id": "OH145",
       "ucmgCode": "OH145",
       "fmLead": "Jonathon Saunders",
       "status": "active",
+      "phase": "Site Going Dark",
       "weeklyUpdate": "[2026-07-23] Lehman Daman (Bryce Bammerlin) update 7/23: OH145 completing TODAY \u2014 furniture disposal + drywall patching ",
       "knownIssues": "None",
       "estCompletion": "Jul 23, 2026",
-      "checklistPct": 50,
-      "phase": "Site Going Dark"
+      "checklistPct": 50
     },
     {
       "id": "OH166",
       "ucmgCode": "OH166",
       "fmLead": "Jonathon Saunders",
       "status": "critical",
+      "phase": "Decom - IT Return Tonight 7/23",
       "weeklyUpdate": "[2026-07-24] KRAFT PRINTER PICKUP TODAY 7/24 8AM-12PM: Jonathan Carter (jonathan_carter@optum.com) confirmed Kraft Print",
-      "knownIssues": "BLOCKER: One fiber item remains \u2014 circuit extension (demark\u2192suite 302) runs through suite 122 IDF cabinet; mi",
+      "knownIssues": "[2026-07-21] DECOM STATUS UPDATE: Physical Optum gear decom COMPLETED 7/20. Ingram Micro cleared Operators closet 7/20. ",
       "estCompletion": "Jul 24, 2026",
-      "checklistPct": 12,
-      "phase": "Decom - IT Return Tonight 7/23"
+      "checklistPct": 12
     },
     {
       "id": "OH178",
       "ucmgCode": "OH178",
       "fmLead": "Jonathon Saunders",
       "status": "active",
-      "weeklyUpdate": "6 lease amendments on file. FM move-out requirements received. Need GC SOW.",
+      "phase": "Pre-Decom Planning",
+      "weeklyUpdate": "[2026-08-19] NLE project transferred TM\u2192FM on 8/13/2026. LED: 1/31/2027. CP ID: 126045. Assigned to John Eaton (john_eat",
       "knownIssues": "None",
-      "estCompletion": "TBD",
-      "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "estCompletion": "Aug 13, 2026",
+      "checklistPct": 0
     },
     {
       "id": "OH193",
       "ucmgCode": "OH193",
       "fmLead": "Jonathon Saunders",
       "status": "active",
-      "weeklyUpdate": "Lease + amendment on file. FM move-out requirements received. Need GC SOW.",
+      "phase": "Pre-Decom Planning",
+      "weeklyUpdate": "[2026-08-19] NLE project transferred TM\u2192FM on 8/13/2026. LED: 3/31/2027. CP ID: 100556. Assigned to John Eaton (john_eat",
       "knownIssues": "None",
-      "estCompletion": "TBD",
-      "checklistPct": 0,
-      "phase": "Pre-Decom Planning"
+      "estCompletion": "Aug 13, 2026",
+      "checklistPct": 0
     }
   ]
 }
